@@ -1,2 +1,12 @@
 export 'home.dart';
 export 'home_screen.dart';
+export 'initial_screen.dart';
+export 'search.dart';
+export 'search_screen.dart';
+export 'notifications.dart';
+export 'notifications_screen.dart';
+export 'profile.dart';
+export 'profile_screen.dart';
+export 'initial.dart';
+export 'vehicle_details.dart';
+export 'service_centers.dart';

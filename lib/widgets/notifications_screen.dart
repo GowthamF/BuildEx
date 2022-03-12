@@ -1,16 +1,16 @@
 import 'package:buildex/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class NotificationsScreen extends StatelessWidget {
+  const NotificationsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('Notificatins'),
       ),
-      body: Home(),
+      body: Notifications(),
     );
   }
 }

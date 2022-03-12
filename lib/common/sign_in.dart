@@ -71,7 +71,7 @@ class _SignInState extends State<SignIn> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
+                            builder: (context) => InitialScreen(),
                           ),
                         );
                       }
@@ -82,7 +82,7 @@ class _SignInState extends State<SignIn> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SignUpScreen()));
+                              builder: (context) => SignUpScreen()));
                     },
                     text: 'Sign Up'),
               ],

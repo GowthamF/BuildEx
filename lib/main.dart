@@ -1,21 +1,28 @@
 import 'package:buildex/common/common.dart';
+import 'package:buildex/cubits/cubits.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const App());
+  runApp(MyApp());
 }
 
-class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomePageChangeCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: SignInScreen(),
       ),
-      home: const SignInScreen(),
     );
   }
 }
