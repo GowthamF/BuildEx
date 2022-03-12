@@ -121,7 +121,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: DropDown([
+                    child: DropDown(const [
                       {UserType.customer: "Customer"},
                       {UserType.vehicleServiceCenter: "Vehicle Service Center"}
                     ], (selectedValue) {}, "User Type", ""),
@@ -135,7 +135,7 @@ class _SignUpState extends State<SignUp> {
                     child: IconButton(
                       iconSize: 100,
                       onPressed: () {},
-                      icon: Icon(Icons.portrait_outlined),
+                      icon: const Icon(Icons.portrait_outlined),
                     ),
                   )
                 ],

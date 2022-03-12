@@ -8,9 +8,9 @@ class NotificationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notificatins'),
+        title: const Text('Notificatins'),
       ),
-      body: Notifications(),
+      body: const Notifications(),
     );
   }
 }

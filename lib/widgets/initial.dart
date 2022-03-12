@@ -17,25 +17,25 @@ class _InitialState extends State<Initial> {
       body: BlocBuilder<HomePageChangeCubit, int>(
         builder: (context, state) {
           if (state == 1) {
-            return SearchScreen();
+            return const SearchScreen();
           } else if (state == 2) {
-            return NotificationsScreen();
+            return const NotificationsScreen();
           } else if (state == 3) {
-            return ProfileScreen();
+            return const ProfileScreen();
           }
 
-          return HomeScreen();
+          return const HomeScreen();
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         notchMargin: 5,
-        shape: CircularNotchedRectangle(),
-        child: Container(
+        shape: const CircularNotchedRectangle(),
+        child: SizedBox(
           height: 60,
           child: BlocBuilder<HomePageChangeCubit, int>(
             builder: (context, state) {
@@ -47,7 +47,7 @@ class _InitialState extends State<Initial> {
                       onPressed: () {
                         context.read<HomePageChangeCubit>().changePage(0);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.home_outlined,
                       ),
                     ),
@@ -58,17 +58,17 @@ class _InitialState extends State<Initial> {
                       onPressed: () {
                         context.read<HomePageChangeCubit>().changePage(1);
                       },
-                      icon: Icon(Icons.search),
+                      icon: const Icon(Icons.search),
                     ),
                   ),
-                  Expanded(child: Text('')),
+                  const Expanded(child: Text('')),
                   Expanded(
                     child: IconButton(
                       color: state == 2 ? Colors.blue : null,
                       onPressed: () {
                         context.read<HomePageChangeCubit>().changePage(2);
                       },
-                      icon: Icon(Icons.notifications_outlined),
+                      icon: const Icon(Icons.notifications_outlined),
                     ),
                   ),
                   Expanded(
@@ -77,7 +77,7 @@ class _InitialState extends State<Initial> {
                       onPressed: () {
                         context.read<HomePageChangeCubit>().changePage(3);
                       },
-                      icon: Icon(Icons.person_outline),
+                      icon: const Icon(Icons.person_outline),
                     ),
                   ),
                 ],

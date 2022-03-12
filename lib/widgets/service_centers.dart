@@ -11,7 +11,7 @@ class ServiceCenters extends StatelessWidget {
         children: [
           Card(
             elevation: 5,
-            child: Container(
+            child: SizedBox(
               width: 250,
               height: 250,
               child: Image.network(
@@ -21,7 +21,7 @@ class ServiceCenters extends StatelessWidget {
           ),
           Card(
             elevation: 5,
-            child: Container(
+            child: SizedBox(
               width: 250,
               height: 250,
               child: Image.network(
@@ -31,7 +31,7 @@ class ServiceCenters extends StatelessWidget {
           ),
           Card(
             elevation: 5,
-            child: Container(
+            child: SizedBox(
               width: 250,
               height: 250,
               child: Image.network(

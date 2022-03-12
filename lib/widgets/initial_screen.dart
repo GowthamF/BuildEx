@@ -10,7 +10,7 @@ class InitialScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HomePageChangeCubit(),
-      child: Initial(),
+      child: const Initial(),
     );
   }
 }

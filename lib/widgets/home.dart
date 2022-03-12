@@ -15,9 +15,9 @@ class _HomeState extends State<Home> {
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: const [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'Vehicle Details',
                 style: TextStyle(fontSize: 25),
@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
             ),
             VehicleDetails(),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'Service Centers',
                 style: TextStyle(fontSize: 25),
