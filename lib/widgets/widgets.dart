@@ -10,3 +10,6 @@ export 'profile_screen.dart';
 export 'initial.dart';
 export 'vehicle_details.dart';
 export 'service_centers.dart';
+export 'service_center.dart';
+export 'service_center_screen.dart';
+export 'service_centers_slots.dart';

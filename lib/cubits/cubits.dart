@@ -5,3 +5,9 @@ class HomePageChangeCubit extends Cubit<int> {
 
   void changePage(int currentIndex) => emit(currentIndex);
 }
+
+class ServiceCenterSlotCubit extends Cubit<DateTime?> {
+  ServiceCenterSlotCubit() : super(null);
+
+  void dateSelected(DateTime dateTime) => emit(dateTime);
+}

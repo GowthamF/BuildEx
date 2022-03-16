@@ -7,6 +7,7 @@ class TextFieldCustom extends StatefulWidget {
   final String labelText;
   final bool isRequired;
   final bool isMultiLine;
+  final Icon? suffixIcon;
   const TextFieldCustom({
     Key? key,
     required this.textEditingController,
@@ -15,6 +16,7 @@ class TextFieldCustom extends StatefulWidget {
     this.isRequired = true,
     this.isMultiLine = false,
     this.focusNode,
+    this.suffixIcon,
   }) : super(key: key);
 
   @override
@@ -38,6 +40,7 @@ class _TextFieldCustomState extends State<TextFieldCustom> {
             borderSide: BorderSide(),
           ),
           labelText: widget.labelText,
+          suffixIcon: widget.suffixIcon,
         ),
         validator: (value) {
           if (!widget.isRequired) {
