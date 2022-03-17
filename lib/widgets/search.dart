@@ -20,38 +20,60 @@ class _SearchState extends State<Search> {
           labelText: 'Search',
           suffixIcon: const Icon(Icons.search),
         ),
-        Padding(
-          padding: const EdgeInsets.all(7.5),
-          child: Wrap(
-            spacing: 15,
-            children: [
-              CheckBoxCustom(
-                initialValue: false,
-                text: 'Vehicles',
-                selectedValue: (val) {},
-              ),
-              CheckBoxCustom(
-                initialValue: false,
-                text: 'Centers',
-                selectedValue: (val) {},
-              ),
-              CheckBoxCustom(
-                initialValue: false,
-                text: 'Parts',
-                selectedValue: (val) {},
-              )
-            ],
+        Expanded(
+          child: DefaultTabController(
+            length: 2,
+            child: Column(
+              children: [
+                const TabBar(
+                  labelColor: Colors.blue,
+                  tabs: [
+                    Tab(
+                      text: 'Vehicle',
+                    ),
+                    Tab(
+                      text: 'Service Centers',
+                    )
+                  ],
+                ),
+                Expanded(
+                  child: TabBarView(
+                    children: [
+                      Column(
+                        children: [
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: 20,
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  title: Text('data$index'),
+                                );
+                              },
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: 20,
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  title: Text('data$index'),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
-        Expanded(
-            child: ListView.builder(
-          itemCount: 20,
-          itemBuilder: ((context, index) {
-            return ListTile(
-              title: Text('data $index'),
-            );
-          }),
-        ))
       ],
     );
   }

@@ -28,7 +28,24 @@ class _InitialState extends State<Initial> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showGeneralDialog(
+            context: context,
+            barrierDismissible: true,
+            barrierLabel: 'Close',
+            pageBuilder: (
+              context,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation,
+            ) {
+              return const AlertDialog(
+                contentPadding: EdgeInsets.all(8),
+                title: Text('Add'),
+                content: AddDialog(),
+              );
+            },
+          );
+        },
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

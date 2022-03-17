@@ -16,6 +16,7 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
+            ServiceCentersRequestsView(),
             Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
