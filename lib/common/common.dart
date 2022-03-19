@@ -9,3 +9,4 @@ export 'sign_up_screen.dart';
 export 'date_picker.dart';
 export 'check_box_custom.dart';
 export 'carousel.dart';
+export 'text_field_readonly.dart';

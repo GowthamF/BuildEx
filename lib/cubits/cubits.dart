@@ -11,3 +11,12 @@ class ServiceCenterSlotCubit extends Cubit<DateTime?> {
 
   void dateSelected(DateTime dateTime) => emit(dateTime);
 }
+
+class UserRolesCubit extends Cubit<List<String>> {
+  UserRolesCubit() : super([]);
+
+  void changeRole(String role) {
+    state.add(role);
+    return emit(state);
+  }
+}

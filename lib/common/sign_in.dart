@@ -28,11 +28,19 @@ class _SignInState extends State<SignIn> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            // Padding(
-            //   padding: const EdgeInsets.all(15.0),
-            //   child: Image.asset('assets/images/playstore.png',
-            //       cacheHeight: MediaQuery.of(context).size.height ~/ 3),
-            // ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: [
+                  Image.asset('assets/images/logo.png',
+                      cacheHeight: MediaQuery.of(context).size.height ~/ 3),
+                  const Text(
+                    'BuildEx',
+                    style: TextStyle(fontSize: 50),
+                  ),
+                ],
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(

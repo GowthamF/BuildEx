@@ -14,6 +14,7 @@ class _InitialState extends State<Initial> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: BlocBuilder<HomePageChangeCubit, int>(
         builder: (context, state) {
           if (state == 1) {
