@@ -1,5 +1,7 @@
 import 'package:buildex/common/common.dart';
+import 'package:buildex/cubits/cubits.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -69,24 +71,67 @@ class _ProfileState extends State<Profile> {
             child: Column(
               children: [
                 const Text('User Roles'),
-                Wrap(
-                  children: [
-                    CheckBoxCustom(
-                      text: 'Buyer',
-                      initialValue: false,
-                      selectedValue: (selectedValue) {},
-                    ),
-                    CheckBoxCustom(
-                      text: 'Vehicle Owner',
-                      initialValue: false,
-                      selectedValue: (selectedValue) {},
-                    ),
-                    CheckBoxCustom(
-                      text: 'Vehicle Service Center',
-                      initialValue: false,
-                      selectedValue: (selectedValue) {},
-                    ),
-                  ],
+                BlocBuilder<UserRolesCubit, List<UserRoles?>>(
+                  builder: (context, state) {
+                    var buyer = state.firstWhere(
+                        (element) => element == UserRoles.buyer,
+                        orElse: () => null);
+                    var serviceCenter = state.firstWhere(
+                        (element) => element == UserRoles.serviceCenter,
+                        orElse: () => null);
+                    var vehicleOwner = state.firstWhere(
+                        (element) => element == UserRoles.vehicleOwner,
+                        orElse: () => null);
+                    return Wrap(
+                      children: [
+                        CheckBoxCustom(
+                          text: 'Buyer',
+                          initialValue: buyer != null,
+                          selectedValue: (bool selectedValue) {
+                            if (selectedValue) {
+                              context
+                                  .read<UserRolesCubit>()
+                                  .changeRole(UserRoles.buyer);
+                            } else {
+                              context
+                                  .read<UserRolesCubit>()
+                                  .removeRole(UserRoles.buyer);
+                            }
+                          },
+                        ),
+                        CheckBoxCustom(
+                          text: 'Vehicle Owner',
+                          initialValue: vehicleOwner != null,
+                          selectedValue: (bool selectedValue) {
+                            if (selectedValue) {
+                              context
+                                  .read<UserRolesCubit>()
+                                  .changeRole(UserRoles.vehicleOwner);
+                            } else {
+                              context
+                                  .read<UserRolesCubit>()
+                                  .removeRole(UserRoles.vehicleOwner);
+                            }
+                          },
+                        ),
+                        CheckBoxCustom(
+                          text: 'Vehicle Service Center',
+                          initialValue: serviceCenter != null,
+                          selectedValue: (bool selectedValue) {
+                            if (selectedValue) {
+                              context
+                                  .read<UserRolesCubit>()
+                                  .changeRole(UserRoles.serviceCenter);
+                            } else {
+                              context
+                                  .read<UserRolesCubit>()
+                                  .removeRole(UserRoles.serviceCenter);
+                            }
+                          },
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ],
             ),

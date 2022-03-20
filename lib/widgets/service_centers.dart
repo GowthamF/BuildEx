@@ -25,7 +25,7 @@ class ServiceCenters extends StatelessWidget {
                 width: 250,
                 height: 250,
                 child: Image.network(
-                  'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y2Fyc3xlbnwwfHwwfHw%3D&w=1000&q=80',
+                  'https://image.shutterstock.com/image-photo/vinnitsa-ukraine-october-21-2017-260nw-782934970.jpg',
                 ),
               ),
             ),
@@ -38,7 +38,7 @@ class ServiceCenters extends StatelessWidget {
                 width: 250,
                 height: 250,
                 child: Image.network(
-                  'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2Fyc3xlbnwwfHwwfHw%3D&w=1000&q=80',
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq5ww3Ee-J6GQEpXCv0MWIFMXQV4yk3VBsZB1RMk-1gz-UY9jFGjPMz-Uy-3UN4zqQNLk&usqp=CAU',
                 ),
               ),
             ),
@@ -51,7 +51,7 @@ class ServiceCenters extends StatelessWidget {
                 width: 250,
                 height: 250,
                 child: Image.network(
-                  'https://media.istockphoto.com/photos/red-generic-sedan-car-isolated-on-white-background-3d-illustration-picture-id1189903200?k=20&m=1189903200&s=612x612&w=0&h=L2bus_XVwK5_yXI08X6RaprdFKF1U9YjpN_pVYPgS0o=',
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQde_Ojxx4QsLu2eRyl26_Q0Br1JUH6Lfo3mJb2sCMXW_4Swb0abF1iLoeIef-cJS-IHrk&usqp=CAU',
                   fit: BoxFit.contain,
                 ),
               ),

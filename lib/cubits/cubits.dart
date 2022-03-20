@@ -12,11 +12,20 @@ class ServiceCenterSlotCubit extends Cubit<DateTime?> {
   void dateSelected(DateTime dateTime) => emit(dateTime);
 }
 
-class UserRolesCubit extends Cubit<List<String>> {
-  UserRolesCubit() : super([]);
+class UserRolesCubit extends Cubit<List<UserRoles?>> {
+  UserRolesCubit() : super([UserRoles.vehicleOwner]);
 
-  void changeRole(String role) {
+  void changeRole(UserRoles role) {
     state.add(role);
     return emit(state);
   }
+
+  void removeRole(UserRoles role) {
+    if (state.length > 1) {
+      state.remove(role);
+      return emit(state);
+    }
+  }
 }
+
+enum UserRoles { buyer, vehicleOwner, serviceCenter }

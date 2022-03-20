@@ -17,6 +17,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => HomePageChangeCubit(),
         ),
+        BlocProvider(
+          create: (context) => UserRolesCubit(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
