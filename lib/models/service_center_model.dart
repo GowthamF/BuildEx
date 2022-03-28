@@ -11,4 +11,12 @@ class ServiceCenterModel {
     required this.name,
     required this.address,
   });
+
+  factory ServiceCenterModel.fromJson(Map<String, dynamic> json) {
+    return _$ServiceCenterModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$ServiceCenterModelToJson(this);
+  }
 }

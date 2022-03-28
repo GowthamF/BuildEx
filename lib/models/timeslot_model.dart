@@ -15,4 +15,12 @@ class TimeslotModel {
     required this.timeTable,
     required this.isActive,
   });
+
+  factory TimeslotModel.fromJson(Map<String, dynamic> json) {
+    return _$TimeslotModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$TimeslotModelToJson(this);
+  }
 }

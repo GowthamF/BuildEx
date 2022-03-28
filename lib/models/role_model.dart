@@ -13,4 +13,12 @@ class RoleModel {
     required this.code,
     required this.isActive,
   });
+
+  factory RoleModel.fromJson(Map<String, dynamic> json) {
+    return _$RoleModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$RoleModelToJson(this);
+  }
 }

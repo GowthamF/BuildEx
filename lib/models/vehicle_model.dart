@@ -27,4 +27,12 @@ class VehicleModel {
     required this.options,
     required this.yom,
   });
+
+  factory VehicleModel.fromJson(Map<String, dynamic> json) {
+    return _$VehicleModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$VehicleModelToJson(this);
+  }
 }

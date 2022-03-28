@@ -11,4 +11,12 @@ class FeedbackModel {
     required this.rate,
     required this.description,
   });
+
+  factory FeedbackModel.fromJson(Map<String, dynamic> json) {
+    return _$FeedbackModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$FeedbackModelToJson(this);
+  }
 }

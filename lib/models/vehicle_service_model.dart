@@ -13,4 +13,12 @@ class VehicleServiceModel {
     required this.date,
     required this.isActive,
   });
+
+  factory VehicleServiceModel.fromJson(Map<String, dynamic> json) {
+    return _$VehicleServiceModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$VehicleServiceModelToJson(this);
+  }
 }

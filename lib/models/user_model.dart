@@ -25,4 +25,12 @@ class UserModel {
     required this.refreshTokens,
     required this.roles,
   });
+
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return _$UserModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$UserModelToJson(this);
+  }
 }

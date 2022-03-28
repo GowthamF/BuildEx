@@ -15,4 +15,12 @@ class VehicleImageModel {
     required this.isActive,
     required this.vehicle,
   });
+
+  factory VehicleImageModel.fromJson(Map<String, dynamic> json) {
+    return _$VehicleImageModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$VehicleImageModelToJson(this);
+  }
 }

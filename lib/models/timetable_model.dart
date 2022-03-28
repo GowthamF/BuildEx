@@ -13,4 +13,12 @@ class TimetableModel {
     required this.day,
     required this.isActive,
   });
+
+  factory TimetableModel.fromJson(Map<String, dynamic> json) {
+    return _$TimetableModelFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$TimetableModelToJson(this);
+  }
 }
