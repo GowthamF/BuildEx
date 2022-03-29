@@ -1,3 +1,4 @@
+import 'package:buildex/helpers/helpers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePageChangeCubit extends Cubit<int> {
@@ -27,5 +28,3 @@ class UserRolesCubit extends Cubit<List<UserRoles?>> {
     }
   }
 }
-
-enum UserRoles { buyer, vehicleOwner, serviceCenter }

@@ -18,7 +18,9 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       refreshTokens: (json['refreshTokens'] as List<dynamic>)
           .map((e) => e as Map<String, dynamic>)
           .toList(),
-      roles: (json['roles'] as List<dynamic>).map((e) => e as String).toList(),
+      roles: (json['roles'] as List<dynamic>)
+          .map((e) => $enumDecode(_$UserRolesEnumMap, e))
+          .toList(),
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
@@ -26,9 +28,15 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'lastName': instance.lastName,
       'mobile': instance.mobile,
       'email': instance.email,
-      'roles': instance.roles,
+      'roles': instance.roles.map((e) => _$UserRolesEnumMap[e]).toList(),
       'jwtTokens': instance.jwtTokens,
       'refreshTokens': instance.refreshTokens,
       'locked': instance.locked,
       'isActive': instance.isActive,
     };
+
+const _$UserRolesEnumMap = {
+  UserRoles.buyer: 'buyer',
+  UserRoles.vehicleOwner: 'vehicleOwner',
+  UserRoles.serviceCenter: 'serviceCenter',
+};

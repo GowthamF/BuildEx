@@ -1,3 +1,4 @@
+import 'package:buildex/helpers/helpers.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_model.g.dart';
@@ -8,7 +9,7 @@ class UserModel {
   final String lastName;
   final String mobile;
   final String email;
-  final List<String> roles;
+  final List<UserRoles> roles;
   final List<String> jwtTokens;
   final List<Map<String, dynamic>> refreshTokens;
   final bool locked;

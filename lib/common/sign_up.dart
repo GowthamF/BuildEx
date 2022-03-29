@@ -1,8 +1,10 @@
+import 'package:buildex/blocs/blocs.dart';
 import 'package:buildex/common/common.dart';
+import 'package:buildex/helpers/helpers.dart';
+import 'package:buildex/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-enum UserType { customer, vehicleServiceCenter }
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -22,9 +24,14 @@ class _SignUpState extends State<SignUp> {
 
   final TextEditingController _passwordController = TextEditingController();
 
+  UserRoles? selectedUserRole;
+
+  late UserBloc _userBloc;
+
   @override
   void initState() {
     super.initState();
+    _userBloc = BlocProvider.of<UserBloc>(context);
   }
 
   @override
@@ -122,34 +129,69 @@ class _SignUpState extends State<SignUp> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: DropDown(const [
-                      {UserType.customer: "Customer"},
-                      {UserType.vehicleServiceCenter: "Vehicle Service Center"}
-                    ], (selectedValue) {}, "User Type", ""),
+                      {UserRoles.vehicleOwner: "Vehicle Owner"},
+                      {UserRoles.serviceCenter: "Vehicle Service Center"},
+                      {UserRoles.buyer: "Buyer"}
+                    ], (selectedValue) {
+                      selectedUserRole = selectedValue;
+                    }, "User Type", ""),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: PasswordField(_passwordController),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: IconButton(
-                      iconSize: 100,
-                      onPressed: () {},
-                      icon: const Icon(Icons.portrait_outlined),
-                    ),
-                  )
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(vertical: 8),
+                  //   child: IconButton(
+                  //     iconSize: 100,
+                  //     onPressed: () {},
+                  //     icon: const Icon(Icons.portrait_outlined),
+                  //   ),
+                  // )
                 ],
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Button(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    text: 'Create an Account'),
-              ],
+            BlocConsumer<UserBloc, UserState>(
+              listener: (context, state) {
+                if (state is UserRegistered) {
+                  Navigator.pop(context);
+                }
+                if (state is UserError) {
+                  var snackBar = SnackBar(content: Text(state.errorMessage));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+              },
+              builder: (context, state) {
+                if (state is UserRegistering) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Button(
+                      onPressed: () {
+                        if (selectedUserRole != null) {
+                          var userModel = UserModel(
+                              firstName: _firstNameController.text.trim(),
+                              lastName: _lastNameController.text.trim(),
+                              mobile: _mobileController.text.trim(),
+                              email: _emailController.text.trim(),
+                              isActive: true,
+                              jwtTokens: [],
+                              locked: false,
+                              refreshTokens: [],
+                              roles: [selectedUserRole!]);
+
+                          _userBloc.add(RegisterUser(userModel: userModel));
+                        }
+                      },
+                      text: 'Create an Account',
+                    ),
+                  ],
+                );
+              },
             )
           ],
         ),
