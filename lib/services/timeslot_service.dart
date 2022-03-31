@@ -18,7 +18,7 @@ class TimeslotService {
     }
   }
 
-  Future<void> updateTimetable(String id, TimetableModel timetableModel) async {
+  Future<void> updateTimetable(String id, TimeslotModel timetableModel) async {
     var response = await httpHelper.put(
       Uri.parse('timeslot/$id'),
       body: timetableModel.toJson(),
