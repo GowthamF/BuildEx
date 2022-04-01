@@ -1,23 +1,28 @@
 part of 'vehicle_bloc.dart';
 
 abstract class VehicleState extends Equatable {
- const VehicleState();
+  const VehicleState();
 
- @override
- List<Object> get props => [];
+  @override
+  List<Object> get props => [];
 }
+
 class VehicleInitial extends VehicleState {
- const VehicleInitial();
+  const VehicleInitial();
 }
 
 class VehicleLoading extends VehicleState {
- const VehicleLoading();
+  const VehicleLoading();
 }
 
 class VehicleLoaded extends VehicleState {
- const VehicleLoaded();
+  const VehicleLoaded();
 }
 
 class VehicleError extends VehicleState {
- const VehicleError();
+  const VehicleError();
 }
+
+class VehicleCreating extends VehicleState {}
+
+class VehicleCreated extends VehicleState {}

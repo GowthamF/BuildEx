@@ -1,23 +1,32 @@
 part of 'feedback_bloc.dart';
 
 abstract class FeedbackState extends Equatable {
- const FeedbackState();
+  const FeedbackState();
 
- @override
- List<Object> get props => [];
+  @override
+  List<Object> get props => [];
 }
+
 class FeedbackInitial extends FeedbackState {
- const FeedbackInitial();
+  const FeedbackInitial();
 }
 
 class FeedbackLoading extends FeedbackState {
- const FeedbackLoading();
+  const FeedbackLoading();
 }
 
 class FeedbackLoaded extends FeedbackState {
- const FeedbackLoaded();
+  const FeedbackLoaded();
 }
 
 class FeedbackError extends FeedbackState {
- const FeedbackError();
+  const FeedbackError();
+}
+
+class FeedbackCreating extends FeedbackState {
+  const FeedbackCreating();
+}
+
+class FeedbackCreated extends FeedbackState {
+  const FeedbackCreated();
 }

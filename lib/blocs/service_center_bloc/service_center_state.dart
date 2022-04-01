@@ -1,23 +1,28 @@
 part of 'service_center_bloc.dart';
 
 abstract class ServiceCenterState extends Equatable {
- const ServiceCenterState();
+  const ServiceCenterState();
 
- @override
- List<Object> get props => [];
+  @override
+  List<Object> get props => [];
 }
+
 class ServiceCenterInitial extends ServiceCenterState {
- const ServiceCenterInitial();
+  const ServiceCenterInitial();
 }
 
 class ServiceCenterLoading extends ServiceCenterState {
- const ServiceCenterLoading();
+  const ServiceCenterLoading();
 }
 
 class ServiceCenterLoaded extends ServiceCenterState {
- const ServiceCenterLoaded();
+  const ServiceCenterLoaded();
 }
 
 class ServiceCenterError extends ServiceCenterState {
- const ServiceCenterError();
+  const ServiceCenterError();
 }
+
+class ServiceCenterCreating extends ServiceCenterState {}
+
+class ServiceCenterCreated extends ServiceCenterState {}

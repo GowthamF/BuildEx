@@ -1,23 +1,32 @@
 part of 'timeslot_bloc.dart';
 
 abstract class TimeslotState extends Equatable {
- const TimeslotState();
+  const TimeslotState();
 
- @override
- List<Object> get props => [];
+  @override
+  List<Object> get props => [];
 }
+
 class TimeslotInitial extends TimeslotState {
- const TimeslotInitial();
+  const TimeslotInitial();
 }
 
 class TimeslotLoading extends TimeslotState {
- const TimeslotLoading();
+  const TimeslotLoading();
 }
 
 class TimeslotLoaded extends TimeslotState {
- const TimeslotLoaded();
+  const TimeslotLoaded();
 }
 
 class TimeslotError extends TimeslotState {
- const TimeslotError();
+  const TimeslotError();
 }
+
+class TimeslotCreating extends TimeslotState {}
+
+class TimeslotCreated extends TimeslotState {}
+
+class TimeslotUpdating extends TimeslotState {}
+
+class TimeslotUpdated extends TimeslotState {}

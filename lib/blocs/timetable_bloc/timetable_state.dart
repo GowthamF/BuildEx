@@ -1,23 +1,32 @@
 part of 'timetable_bloc.dart';
 
 abstract class TimetableState extends Equatable {
- const TimetableState();
+  const TimetableState();
 
- @override
- List<Object> get props => [];
+  @override
+  List<Object> get props => [];
 }
+
 class TimetableInitial extends TimetableState {
- const TimetableInitial();
+  const TimetableInitial();
 }
 
 class TimetableLoading extends TimetableState {
- const TimetableLoading();
+  const TimetableLoading();
 }
 
 class TimetableLoaded extends TimetableState {
- const TimetableLoaded();
+  const TimetableLoaded();
 }
 
 class TimetableError extends TimetableState {
- const TimetableError();
+  const TimetableError();
 }
+
+class TimetableCreating extends TimetableState {}
+
+class TimetableCreated extends TimetableState {}
+
+class TimetableUpdating extends TimetableState {}
+
+class TimetableUpdated extends TimetableState {}

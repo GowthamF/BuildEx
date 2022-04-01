@@ -1,11 +1,16 @@
 part of 'roles_bloc.dart';
 
 abstract class RolesEvent extends Equatable {
- const RolesEvent();
+  const RolesEvent();
 
- @override
- List<Object> get props => [];
+  @override
+  List<Object> get props => [];
 }
+
 class GetRoles extends RolesEvent {
- const GetRoles();
+  const GetRoles();
+}
+
+class UpdateRoles extends RolesEvent {
+  const UpdateRoles();
 }
