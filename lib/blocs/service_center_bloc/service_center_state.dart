@@ -20,7 +20,11 @@ class ServiceCenterLoaded extends ServiceCenterState {
 }
 
 class ServiceCenterError extends ServiceCenterState {
-  const ServiceCenterError();
+  final String? error;
+  const ServiceCenterError(this.error);
+
+  @override
+  List<Object> get props => [error!];
 }
 
 class ServiceCenterCreating extends ServiceCenterState {}

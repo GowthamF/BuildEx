@@ -21,6 +21,9 @@ class _AddDialogState extends State<AddDialog> {
         var vehicleOwner = state.firstWhere(
             (element) => element == UserRoles.vehicleOwner,
             orElse: () => null);
+        var serviceCenterOwner = state.firstWhere(
+            (element) => element == UserRoles.serviceCenter,
+            orElse: () => null);
         return Wrap(children: [
           ListTile(
             title: const Text('Register Vehicle'),
@@ -52,6 +55,23 @@ class _AddDialogState extends State<AddDialog> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const AddVehicleSaleScreen(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Add Service Center'),
+            enabled: serviceCenterOwner != null,
+            subtitle: serviceCenterOwner != null
+                ? null
+                : const Text('Service Center role should be added',
+                    style: TextStyle(color: Colors.red)),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AddServiceCenterScreen(),
                 ),
               );
             },

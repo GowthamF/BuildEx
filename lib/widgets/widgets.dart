@@ -25,3 +25,7 @@ export 'service_centers_requests_screen.dart';
 export 'service_centers_request_view.dart';
 export 'profile_screen.dart';
 export 'profile.dart';
+export 'add_service_center.dart';
+export 'add_service_center_screen.dart';
+export 'my_service_center.dart';
+export 'my_service_center_screen.dart';

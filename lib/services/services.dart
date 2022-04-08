@@ -6,3 +6,4 @@ export 'timetable_service.dart';
 export 'vehicle_image_service.dart';
 export 'vehicle_service.dart';
 export 'vehicle_services_service.dart';
+export 'file_service.dart';

@@ -6,3 +6,4 @@ export 'timetable_repository.dart';
 export 'vehicle_image_repository.dart';
 export 'vehicle_repository.dart';
 export 'vehicle_service_repository.dart';
+export 'file_repository.dart';

@@ -20,7 +20,11 @@ class TimeslotLoaded extends TimeslotState {
 }
 
 class TimeslotError extends TimeslotState {
-  const TimeslotError();
+  final String message;
+  const TimeslotError({required this.message});
+
+  @override
+  List<Object> get props => [message];
 }
 
 class TimeslotCreating extends TimeslotState {}

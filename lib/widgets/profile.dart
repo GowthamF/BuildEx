@@ -1,6 +1,7 @@
 import 'package:buildex/common/common.dart';
 import 'package:buildex/cubits/cubits.dart';
 import 'package:buildex/helpers/helpers.dart';
+import 'package:buildex/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -140,6 +141,28 @@ class _ProfileState extends State<Profile> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              BlocBuilder<UserRolesCubit, List<UserRoles?>>(
+                builder: (context, state) {
+                  var serviceCenterOwner = state.firstWhere(
+                      (element) => element == UserRoles.serviceCenter,
+                      orElse: () => null);
+                  print(serviceCenterOwner);
+                  if (serviceCenterOwner == null) {
+                    return const SizedBox();
+                  }
+                  return ListTile(
+                    title: const Text('My Service Center'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MyServiceCenterScreen(),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
               Button(
                   onPressed: () {
                     // Navigator.pop(context);

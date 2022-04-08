@@ -15,17 +15,22 @@ class TimetableLoading extends TimetableState {
   const TimetableLoading();
 }
 
-class TimetableLoaded extends TimetableState {
-  const TimetableLoaded();
-}
+class TimetableLoaded extends TimetableState {}
 
 class TimetableError extends TimetableState {
-  const TimetableError();
+  final String message;
+  const TimetableError({required this.message});
+
+  @override
+  List<Object> get props => [message];
 }
 
 class TimetableCreating extends TimetableState {}
 
-class TimetableCreated extends TimetableState {}
+class TimetableCreated extends TimetableState {
+  final String? timetableId;
+  const TimetableCreated(this.timetableId);
+}
 
 class TimetableUpdating extends TimetableState {}
 

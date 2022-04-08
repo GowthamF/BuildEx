@@ -20,7 +20,11 @@ class VehicleLoaded extends VehicleState {
 }
 
 class VehicleError extends VehicleState {
-  const VehicleError();
+  final String message;
+  const VehicleError({required this.message});
+
+  @override
+  List<Object> get props => [message];
 }
 
 class VehicleCreating extends VehicleState {}

@@ -7,3 +7,4 @@ export 'timetable_model.dart';
 export 'vehicle_image_model.dart';
 export 'vehicle_model.dart';
 export 'vehicle_service_model.dart';
+export 'file_model.dart';

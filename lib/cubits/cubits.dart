@@ -18,13 +18,13 @@ class UserRolesCubit extends Cubit<List<UserRoles?>> {
 
   void changeRole(UserRoles role) {
     state.add(role);
-    return emit(state);
+    return emit(state.toList());
   }
 
   void removeRole(UserRoles role) {
     if (state.length > 1) {
       state.remove(role);
-      return emit(state);
+      return emit(state.toList());
     }
   }
 }

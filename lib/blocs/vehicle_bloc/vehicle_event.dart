@@ -11,4 +11,10 @@ class GetVehicle extends VehicleEvent {
   const GetVehicle();
 }
 
-class CreateVehicle extends VehicleEvent {}
+class CreateVehicle extends VehicleEvent {
+  final VehicleModel vehicleModel;
+  const CreateVehicle({required this.vehicleModel});
+
+  @override
+  List<Object> get props => [vehicleModel];
+}

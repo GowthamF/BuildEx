@@ -10,7 +10,7 @@ class ServiceCenterRepository {
     _serviceCenterService = ServiceCenterService(httpHelper);
   }
 
-  Future<void> createFeedback(ServiceCenterModel serviceCenterModel) {
+  Future<void> createServiceCenter(ServiceCenterModel serviceCenterModel) {
     return _serviceCenterService.createServiceCenter(serviceCenterModel);
   }
 }

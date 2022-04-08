@@ -12,5 +12,9 @@ class GetServiceCenter extends ServiceCenterEvent {
 }
 
 class CreateServiceCenter extends ServiceCenterEvent {
-  const CreateServiceCenter();
+  final ServiceCenterModel serviceCenterModel;
+  const CreateServiceCenter({required this.serviceCenterModel});
+
+  @override
+  List<Object> get props => [serviceCenterModel];
 }

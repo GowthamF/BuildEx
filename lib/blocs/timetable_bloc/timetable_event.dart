@@ -8,9 +8,28 @@ abstract class TimetableEvent extends Equatable {
 }
 
 class GetTimetable extends TimetableEvent {
-  const GetTimetable();
+  final String id;
+  const GetTimetable({required this.id});
+
+  @override
+  List<Object> get props => [id];
 }
 
-class CreateTimetable extends TimetableEvent {}
+class CreateTimetable extends TimetableEvent {
+  final TimetableModel timeTableModel;
 
-class UpdateTimetable extends TimetableEvent {}
+  const CreateTimetable(this.timeTableModel);
+
+  @override
+  List<Object> get props => [timeTableModel];
+}
+
+class UpdateTimetable extends TimetableEvent {
+  final TimetableModel timeTableModel;
+  final String id;
+
+  const UpdateTimetable({required this.id, required this.timeTableModel});
+
+  @override
+  List<Object> get props => [id, timeTableModel];
+}

@@ -10,7 +10,7 @@ class TimetableRepository {
     _timetableService = TimetableService(httpHelper);
   }
 
-  Future<void> createTimetable(TimetableModel timetableModel) {
+  Future<String?> createTimetable(TimetableModel timetableModel) {
     return _timetableService.createTimetable(timetableModel);
   }
 

@@ -4,20 +4,20 @@ import 'package:buildex/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class RegisterVehicleScreen extends StatelessWidget {
-  const RegisterVehicleScreen({Key? key}) : super(key: key);
+class AddServiceCenterScreen extends StatelessWidget {
+  const AddServiceCenterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Register Vehicle'),
+        title: const Text('Add Service Center'),
       ),
       body: BlocProvider(
-        create: (context) => VehicleBloc(
-          RepositoryProvider.of<VehicleRepository>(context),
+        create: (context) => ServiceCenterBloc(
+          RepositoryProvider.of<ServiceCenterRepository>(context),
         ),
-        child: const RegisterVehicle(),
+        child: const AddServiceCenter(),
       ),
     );
   }

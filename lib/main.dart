@@ -6,7 +6,7 @@ import 'package:buildex/repositories/repositories.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
 }
 
@@ -26,6 +26,36 @@ class MyApp extends StatelessWidget {
             RepositoryProvider.of<HttpHelper>(context),
           ),
         ),
+        RepositoryProvider<ServiceCenterRepository>(
+          create: (context) => ServiceCenterRepository(
+            RepositoryProvider.of<HttpHelper>(context),
+          ),
+        ),
+        RepositoryProvider<TimeslotRepository>(
+          create: (context) => TimeslotRepository(
+            RepositoryProvider.of<HttpHelper>(context),
+          ),
+        ),
+        RepositoryProvider<TimetableRepository>(
+          create: (context) => TimetableRepository(
+            RepositoryProvider.of<HttpHelper>(context),
+          ),
+        ),
+        RepositoryProvider<VehicleServiceRepository>(
+          create: (context) => VehicleServiceRepository(
+            RepositoryProvider.of<HttpHelper>(context),
+          ),
+        ),
+        RepositoryProvider<VehicleImageRepository>(
+          create: (context) => VehicleImageRepository(
+            RepositoryProvider.of<HttpHelper>(context),
+          ),
+        ),
+        RepositoryProvider<VehicleRepository>(
+          create: (context) => VehicleRepository(
+            RepositoryProvider.of<HttpHelper>(context),
+          ),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -39,6 +69,38 @@ class MyApp extends StatelessWidget {
             create: (context) => UserBloc(
               RepositoryProvider.of<UserRepository>(context),
             ),
+          ),
+          BlocProvider(
+            create: (context) => FeedbackBloc(),
+          ),
+          BlocProvider(
+            create: (context) => RolesBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ServiceCenterBloc(
+              RepositoryProvider.of<ServiceCenterRepository>(context),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => TimeslotBloc(
+              RepositoryProvider.of<TimeslotRepository>(context),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => TimetableBloc(
+              RepositoryProvider.of<TimetableRepository>(context),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => VehicleBloc(
+              RepositoryProvider.of<VehicleRepository>(context),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => VehicleImageBloc(),
+          ),
+          BlocProvider(
+            create: (context) => VehicleServiceBloc(),
           ),
         ],
         child: MaterialApp(

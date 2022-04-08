@@ -8,9 +8,27 @@ abstract class TimeslotEvent extends Equatable {
 }
 
 class GetTimeslot extends TimeslotEvent {
-  const GetTimeslot();
+  final String id;
+  const GetTimeslot(this.id);
+
+  @override
+  List<Object> get props => [id];
 }
 
-class CreateTimeSlot extends TimeslotEvent {}
+class CreateTimeSlot extends TimeslotEvent {
+  final TimeslotModel timeslotModel;
+  const CreateTimeSlot(this.timeslotModel);
 
-class UpdateTimeSlot extends TimeslotEvent {}
+  @override
+  List<Object> get props => [timeslotModel];
+}
+
+class UpdateTimeSlot extends TimeslotEvent {
+  final String id;
+  final TimeslotModel timeslotModel;
+
+  const UpdateTimeSlot(this.id, this.timeslotModel);
+
+  @override
+  List<Object> get props => [id, timeslotModel];
+}
