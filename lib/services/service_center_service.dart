@@ -63,17 +63,20 @@ class ServiceCenterService {
   Future<List<ServiceCenterModel>> getAvailableServiceCenters() async {
     List<ServiceCenterModel> serviceCenters = [];
     var response = await httpHelper.get(
-      Uri.parse('serviceCenter/load-by-owner'),
+      Uri.parse('serviceCenter'),
     );
     print(response.body);
     if (response.statusCode == 200) {
-      var jsonResponse = Map<String, dynamic>.from(jsonDecode(response.body));
-      if (jsonResponse.containsKey('statusCode')) {
-        if (jsonResponse['statusCode'] != 200) {
-          var message = jsonResponse.containsKey('message')
-              ? jsonResponse['message']
-              : 'Error while creating an account';
-          throw ReportToUserException(message: message);
+      var responseBody = jsonDecode(response.body);
+      if (responseBody is Map) {
+        var jsonResponse = Map<String, dynamic>.from(responseBody);
+        if (jsonResponse.containsKey('statusCode')) {
+          if (jsonResponse['statusCode'] != 200) {
+            var message = jsonResponse.containsKey('message')
+                ? jsonResponse['message']
+                : 'Error while creating an account';
+            throw ReportToUserException(message: message);
+          }
         }
       } else {
         var list = List<Map<String, dynamic>>.from(jsonDecode(response.body));
@@ -88,5 +91,33 @@ class ServiceCenterService {
     }
 
     return serviceCenters;
+  }
+
+  Future<ServiceCenterModel?> getServiceCenterById(
+      String serviceCenterId) async {
+    var response = await httpHelper.get(
+      Uri.parse('serviceCenter/load-by-center-id/$serviceCenterId'),
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      var jsonResponse = Map<String, dynamic>.from(jsonDecode(response.body));
+      if (jsonResponse.containsKey('statusCode')) {
+        if (jsonResponse['statusCode'] != 200) {
+          var message = jsonResponse.containsKey('message')
+              ? jsonResponse['message']
+              : 'Error while retrieving';
+          throw ReportToUserException(message: message);
+        }
+      } else {
+        var serviceCenter = ServiceCenterModel.fromJson(jsonResponse);
+        return serviceCenter;
+      }
+    }
+
+    if (response.statusCode != 200) {
+      throw ReportToUserException(message: 'Error while creating an account');
+    }
+
+    return null;
   }
 }

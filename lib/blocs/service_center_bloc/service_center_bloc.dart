@@ -15,6 +15,7 @@ class ServiceCenterBloc extends Bloc<ServiceCenterEvent, ServiceCenterState> {
     on<CreateServiceCenter>(_onCreateServiceCenter);
     on<GetServiceCenterByOwner>(_onGetServiceCenterByOwner);
     on<GetServiceCenters>(_onGetServiceCenters);
+    on<GetServiceCenterById>(_onGetServiceCenterById);
   }
 
   FutureOr<void> _onCreateServiceCenter(
@@ -36,6 +37,18 @@ class ServiceCenterBloc extends Bloc<ServiceCenterEvent, ServiceCenterState> {
       var serviceCenter =
           await serviceCenterRepository.getServiceCenterByOwner(event.userId);
       emit(ServiceCenterByOwnerLoaded(serviceCenterModel: serviceCenter));
+    } on ReportToUserException catch (e) {
+      emit(ServiceCenterError(e.message));
+    }
+  }
+
+  FutureOr<void> _onGetServiceCenterById(
+      GetServiceCenterById event, Emitter<ServiceCenterState> emit) async {
+    try {
+      emit(ServiceCenterByIdLoading());
+      var serviceCenter = await serviceCenterRepository
+          .getServiceCenterById(event.serviceCenterId);
+      emit(ServiceCenterByIdLoaded(serviceCenterModel: serviceCenter));
     } on ReportToUserException catch (e) {
       emit(ServiceCenterError(e.message));
     }

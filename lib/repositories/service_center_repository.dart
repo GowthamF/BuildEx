@@ -21,4 +21,8 @@ class ServiceCenterRepository {
   Future<List<ServiceCenterModel>> getAvailableServiceCenters() {
     return _serviceCenterService.getAvailableServiceCenters();
   }
+
+  Future<ServiceCenterModel?> getServiceCenterById(String serviceCenterId) {
+    return _serviceCenterService.getServiceCenterById(serviceCenterId);
+  }
 }

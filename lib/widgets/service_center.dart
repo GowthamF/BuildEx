@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ServiceCenter extends StatefulWidget {
-  const ServiceCenter({Key? key}) : super(key: key);
+  final String serviceId;
+  const ServiceCenter({required this.serviceId, Key? key}) : super(key: key);
 
   @override
   State<ServiceCenter> createState() => _ServiceCenterState();

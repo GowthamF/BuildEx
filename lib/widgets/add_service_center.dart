@@ -75,7 +75,8 @@ class _AddServiceCenterState extends State<AddServiceCenter> {
                       var serviceCenterModel = ServiceCenterModel(
                           name: _serviceCenterNameEditingController.text.trim(),
                           address: _serviceCenterAddressEditingController.text
-                              .trim());
+                              .trim(),
+                          id: '');
                       _serviceCenterBloc.add(CreateServiceCenter(
                           serviceCenterModel: serviceCenterModel));
                     }

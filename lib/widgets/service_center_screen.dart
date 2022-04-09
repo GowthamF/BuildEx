@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ServiceCenterScreen extends StatelessWidget {
-  const ServiceCenterScreen({Key? key}) : super(key: key);
+  final String serviceCenterId;
+  const ServiceCenterScreen({required this.serviceCenterId, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ServiceCenterScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Service Center'),
           ),
-          body: const ServiceCenter(),
+          body: ServiceCenter(serviceId: serviceCenterId),
         ),
       ),
     );
