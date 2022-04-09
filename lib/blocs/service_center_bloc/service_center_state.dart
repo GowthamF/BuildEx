@@ -16,7 +16,22 @@ class ServiceCenterLoading extends ServiceCenterState {
 }
 
 class ServiceCenterLoaded extends ServiceCenterState {
-  const ServiceCenterLoaded();
+  final List<ServiceCenterModel> serviceCenters;
+  const ServiceCenterLoaded({required this.serviceCenters});
+
+  @override
+  List<Object> get props => [serviceCenters];
+}
+
+class ServiceCenterByOwnerLoading extends ServiceCenterState {}
+
+class ServiceCenterByOwnerLoaded extends ServiceCenterState {
+  final ServiceCenterModel? serviceCenterModel;
+
+  const ServiceCenterByOwnerLoaded({required this.serviceCenterModel});
+
+  @override
+  List<Object> get props => [serviceCenterModel!];
 }
 
 class ServiceCenterError extends ServiceCenterState {

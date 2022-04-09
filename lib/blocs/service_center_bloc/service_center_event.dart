@@ -7,8 +7,17 @@ abstract class ServiceCenterEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetServiceCenter extends ServiceCenterEvent {
-  const GetServiceCenter();
+class GetServiceCenters extends ServiceCenterEvent {
+  const GetServiceCenters();
+}
+
+class GetServiceCenterByOwner extends ServiceCenterEvent {
+  final String userId;
+
+  const GetServiceCenterByOwner({required this.userId});
+
+  @override
+  List<Object> get props => [userId];
 }
 
 class CreateServiceCenter extends ServiceCenterEvent {

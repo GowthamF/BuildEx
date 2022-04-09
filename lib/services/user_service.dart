@@ -34,7 +34,7 @@ class UserService {
 
   Future<void> loginUser(String userName, String password) async {
     var response = await httpHelper.post(
-      Uri.parse('/auth/login'),
+      Uri.parse('auth/login'),
       body: {'userName': userName, 'passowrd': password},
     );
     print(response.body);

@@ -13,6 +13,8 @@ class ServiceCenterBloc extends Bloc<ServiceCenterEvent, ServiceCenterState> {
   ServiceCenterBloc(this.serviceCenterRepository)
       : super(const ServiceCenterInitial()) {
     on<CreateServiceCenter>(_onCreateServiceCenter);
+    on<GetServiceCenterByOwner>(_onGetServiceCenterByOwner);
+    on<GetServiceCenters>(_onGetServiceCenters);
   }
 
   FutureOr<void> _onCreateServiceCenter(
@@ -22,6 +24,30 @@ class ServiceCenterBloc extends Bloc<ServiceCenterEvent, ServiceCenterState> {
       await serviceCenterRepository
           .createServiceCenter(event.serviceCenterModel);
       emit(ServiceCenterCreated());
+    } on ReportToUserException catch (e) {
+      emit(ServiceCenterError(e.message));
+    }
+  }
+
+  FutureOr<void> _onGetServiceCenterByOwner(
+      GetServiceCenterByOwner event, Emitter<ServiceCenterState> emit) async {
+    try {
+      emit(ServiceCenterByOwnerLoading());
+      var serviceCenter =
+          await serviceCenterRepository.getServiceCenterByOwner(event.userId);
+      emit(ServiceCenterByOwnerLoaded(serviceCenterModel: serviceCenter));
+    } on ReportToUserException catch (e) {
+      emit(ServiceCenterError(e.message));
+    }
+  }
+
+  FutureOr<void> _onGetServiceCenters(
+      GetServiceCenters event, Emitter<ServiceCenterState> emit) async {
+    try {
+      emit(const ServiceCenterLoading());
+      var serviceCenters =
+          await serviceCenterRepository.getAvailableServiceCenters();
+      emit(ServiceCenterLoaded(serviceCenters: serviceCenters));
     } on ReportToUserException catch (e) {
       emit(ServiceCenterError(e.message));
     }

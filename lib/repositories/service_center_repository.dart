@@ -13,4 +13,12 @@ class ServiceCenterRepository {
   Future<void> createServiceCenter(ServiceCenterModel serviceCenterModel) {
     return _serviceCenterService.createServiceCenter(serviceCenterModel);
   }
+
+  Future<ServiceCenterModel?> getServiceCenterByOwner(String userId) {
+    return _serviceCenterService.getServiceCenterByOwner(userId);
+  }
+
+  Future<List<ServiceCenterModel>> getAvailableServiceCenters() {
+    return _serviceCenterService.getAvailableServiceCenters();
+  }
 }
