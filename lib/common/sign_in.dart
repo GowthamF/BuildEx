@@ -1,6 +1,8 @@
+import 'package:buildex/blocs/blocs.dart';
 import 'package:buildex/common/common.dart';
 import 'package:buildex/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -16,9 +18,12 @@ class _SignInState extends State<SignIn> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  late UserBloc _userBloc;
+
   @override
   void initState() {
     super.initState();
+    _userBloc = BlocProvider.of<UserBloc>(context);
   }
 
   @override
@@ -73,18 +78,34 @@ class _SignInState extends State<SignIn> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Button(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const InitialScreen(),
-                          ),
-                        );
-                      }
-                    },
-                    text: 'Sign In'),
+                BlocConsumer<UserBloc, UserState>(
+                  listener: (context, state) {
+                    if (state is UserLogged) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const InitialScreen(),
+                        ),
+                      );
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is UserLogging) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    return Button(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _userBloc.add(LoginUser(
+                                userName: _emailController.text.trim(),
+                                password: _passwordController.text.trim()));
+                          }
+                        },
+                        text: 'Sign In');
+                  },
+                ),
                 Button(
                     onPressed: () {
                       Navigator.push(

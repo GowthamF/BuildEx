@@ -14,6 +14,7 @@ class UserModel {
   final List<Map<String, dynamic>> refreshTokens;
   final bool locked;
   final bool isActive;
+  final String password;
 
   UserModel({
     required this.firstName,
@@ -25,6 +26,7 @@ class UserModel {
     required this.locked,
     required this.refreshTokens,
     required this.roles,
+    required this.password,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {

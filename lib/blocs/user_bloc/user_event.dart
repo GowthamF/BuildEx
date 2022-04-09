@@ -19,3 +19,13 @@ class RegisterUser extends UserEvent {
   @override
   List<Object> get props => [userModel];
 }
+
+class LoginUser extends UserEvent {
+  final String userName;
+  final String password;
+
+  const LoginUser({required this.userName, required this.password});
+
+  @override
+  List<Object> get props => [userName, password];
+}

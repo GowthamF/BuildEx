@@ -13,6 +13,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   UserBloc(this.userRepository) : super(const UserInitial()) {
     on<RegisterUser>(_onRegisterUserEvent);
+    on<LoginUser>(_onLoginUserEvent);
   }
 
   Future<void> _onRegisterUserEvent(
@@ -21,6 +22,17 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       emit(UserRegistering());
       await userRepository.registerUser(event.userModel);
       emit(UserRegistered());
+    } on ReportToUserException catch (e) {
+      emit(UserError(errorMessage: e.message));
+    }
+  }
+
+  FutureOr<void> _onLoginUserEvent(
+      LoginUser event, Emitter<UserState> emit) async {
+    try {
+      emit(UserLogging());
+      await userRepository.loginUser(event.userName, event.password);
+      emit(UserLogged());
     } on ReportToUserException catch (e) {
       emit(UserError(errorMessage: e.message));
     }

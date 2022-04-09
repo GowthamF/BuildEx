@@ -178,6 +178,7 @@ class _SignUpState extends State<SignUp> {
                               lastName: _lastNameController.text.trim(),
                               mobile: _mobileController.text.trim(),
                               email: _emailController.text.trim(),
+                              password: _passwordController.text.trim(),
                               isActive: true,
                               jwtTokens: [],
                               locked: false,

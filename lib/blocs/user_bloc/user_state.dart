@@ -30,3 +30,7 @@ class UserError extends UserState {
 class UserRegistering extends UserState {}
 
 class UserRegistered extends UserState {}
+
+class UserLogging extends UserState {}
+
+class UserLogged extends UserState {}

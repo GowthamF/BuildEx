@@ -1,5 +1,8 @@
+import 'package:buildex/blocs/blocs.dart';
 import 'package:buildex/common/common.dart';
+import 'package:buildex/repositories/repositories.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -15,7 +18,12 @@ class SignInScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Sign In'),
           ),
-          body: const SignIn(),
+          body: BlocProvider(
+            create: (context) => UserBloc(
+              RepositoryProvider.of<UserRepository>(context),
+            ),
+            child: const SignIn(),
+          ),
         ),
       ),
     );

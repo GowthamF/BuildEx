@@ -14,8 +14,8 @@ class UserRepository {
     return _userService.registerUser(userModel);
   }
 
-  Future<void> loginUser(UserModel userModel) {
-    return _userService.loginUser(userModel);
+  Future<void> loginUser(String userName, String password) {
+    return _userService.loginUser(userName, password);
   }
 
   Future<void> logoutUser(UserModel userModel) {

@@ -32,9 +32,10 @@ class UserService {
     }
   }
 
-  Future<void> loginUser(UserModel userModel) async {
-    var response = await httpHelper.get(
+  Future<void> loginUser(String userName, String password) async {
+    var response = await httpHelper.post(
       Uri.parse('/auth/login'),
+      body: {'userName': userName, 'passowrd': password},
     );
     print(response.body);
     if (response.statusCode == 200) {
