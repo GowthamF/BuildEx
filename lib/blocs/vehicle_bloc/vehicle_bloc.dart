@@ -12,6 +12,8 @@ class VehicleBloc extends Bloc<VehicleEvent, VehicleState> {
   final VehicleRepository vehicleRepository;
   VehicleBloc(this.vehicleRepository) : super(const VehicleInitial()) {
     on<CreateVehicle>(_onCreateVehicle);
+    on<GetVehicles>(_onGetVehicles);
+    on<GetVehicleById>(_onGetVehicleById);
   }
 
   FutureOr<void> _onCreateVehicle(
@@ -20,6 +22,28 @@ class VehicleBloc extends Bloc<VehicleEvent, VehicleState> {
       emit(VehicleCreating());
       await vehicleRepository.createVehicle(event.vehicleModel);
       emit(VehicleCreated());
+    } on ReportToUserException catch (e) {
+      emit(VehicleError(message: e.message));
+    }
+  }
+
+  FutureOr<void> _onGetVehicles(
+      GetVehicles event, Emitter<VehicleState> emit) async {
+    try {
+      emit(VehicleLoading());
+      var vehicles = await vehicleRepository.getAllVehicles();
+      emit(VehicleLoaded(vehicles: vehicles));
+    } on ReportToUserException catch (e) {
+      emit(VehicleError(message: e.message));
+    }
+  }
+
+  FutureOr<void> _onGetVehicleById(
+      GetVehicleById event, Emitter<VehicleState> emit) async {
+    try {
+      emit(VehicleByIdLoading());
+      var vehicle = await vehicleRepository.getVehicleById(event.vehicleId);
+      emit(VehicleByIdLoaded(vehicleModel: vehicle));
     } on ReportToUserException catch (e) {
       emit(VehicleError(message: e.message));
     }

@@ -60,6 +60,8 @@ class _ServiceCentersState extends State<ServiceCenters> {
         }
 
         return const Center(
+          widthFactor: 250,
+          heightFactor: 250,
           child: CircularProgressIndicator(),
         );
       },

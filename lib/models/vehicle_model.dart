@@ -14,6 +14,8 @@ class VehicleModel {
   final String options;
   final int engineCapacity;
   final bool isActive;
+  @JsonKey(name: '_id')
+  String? id;
 
   VehicleModel({
     required this.registrationNumber,
@@ -26,6 +28,7 @@ class VehicleModel {
     required this.model,
     required this.options,
     required this.yom,
+    this.id,
   });
 
   factory VehicleModel.fromJson(Map<String, dynamic> json) {

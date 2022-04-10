@@ -13,4 +13,12 @@ class VehicleRepository {
   Future<void> createVehicle(VehicleModel vehicleModel) {
     return _vehicleService.createVehicle(vehicleModel);
   }
+
+  Future<List<VehicleModel>> getAllVehicles() {
+    return _vehicleService.getAllVehicles();
+  }
+
+  Future<VehicleModel?> getVehicleById(String vehicleId) {
+    return _vehicleService.getVehicleById(vehicleId);
+  }
 }

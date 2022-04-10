@@ -17,6 +17,7 @@ VehicleModel _$VehicleModelFromJson(Map<String, dynamic> json) => VehicleModel(
       model: json['model'] as String,
       options: json['options'] as String,
       yom: json['yom'] as int,
+      id: json['_id'] as String,
     );
 
 Map<String, dynamic> _$VehicleModelToJson(VehicleModel instance) =>
@@ -31,4 +32,5 @@ Map<String, dynamic> _$VehicleModelToJson(VehicleModel instance) =>
       'options': instance.options,
       'engineCapacity': instance.engineCapacity,
       'isActive': instance.isActive,
+      '_id': instance.id,
     };

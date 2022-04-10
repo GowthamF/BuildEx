@@ -11,12 +11,14 @@ class VehicleInitial extends VehicleState {
   const VehicleInitial();
 }
 
-class VehicleLoading extends VehicleState {
-  const VehicleLoading();
-}
+class VehicleLoading extends VehicleState {}
 
 class VehicleLoaded extends VehicleState {
-  const VehicleLoaded();
+  final List<VehicleModel> vehicles;
+  const VehicleLoaded({required this.vehicles});
+
+  @override
+  List<Object> get props => [vehicles];
 }
 
 class VehicleError extends VehicleState {
@@ -30,3 +32,10 @@ class VehicleError extends VehicleState {
 class VehicleCreating extends VehicleState {}
 
 class VehicleCreated extends VehicleState {}
+
+class VehicleByIdLoading extends VehicleState {}
+
+class VehicleByIdLoaded extends VehicleState {
+  final VehicleModel? vehicleModel;
+  const VehicleByIdLoaded({required this.vehicleModel});
+}

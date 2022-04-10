@@ -100,6 +100,7 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         var vehicleModel = VehicleModel(
+                          id: null,
                           engineCapacity: int.parse(
                             _engineCapacityEditingController.text.trim(),
                           ),

@@ -7,9 +7,7 @@ abstract class VehicleEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetVehicle extends VehicleEvent {
-  const GetVehicle();
-}
+class GetVehicles extends VehicleEvent {}
 
 class CreateVehicle extends VehicleEvent {
   final VehicleModel vehicleModel;
@@ -17,4 +15,12 @@ class CreateVehicle extends VehicleEvent {
 
   @override
   List<Object> get props => [vehicleModel];
+}
+
+class GetVehicleById extends VehicleEvent {
+  final String vehicleId;
+  const GetVehicleById(this.vehicleId);
+
+  @override
+  List<Object> get props => [vehicleId];
 }
