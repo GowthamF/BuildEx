@@ -12,12 +12,15 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       mobile: json['mobile'] as String,
       email: json['email'] as String,
       isActive: json['isActive'] as bool,
-      jwtTokens:
-          (json['jwtTokens'] as List<dynamic>).map((e) => e as String).toList(),
+      jwtTokens: (json['jwtTokens'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
       locked: json['locked'] as bool,
-      refreshTokens: (json['refreshTokens'] as List<dynamic>)
-          .map((e) => e as Map<String, dynamic>)
-          .toList(),
+      refreshTokens: (json['refreshTokens'] as List<dynamic>?)
+              ?.map((e) => e as Map<String, dynamic>)
+              .toList() ??
+          const [],
       roles: (json['roles'] as List<dynamic>)
           .map((e) => $enumDecode(_$UserRolesEnumMap, e))
           .toList(),

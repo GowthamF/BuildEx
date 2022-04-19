@@ -16,6 +16,11 @@ class ServiceCenterSlotCubit extends Cubit<DateTime?> {
 class UserRolesCubit extends Cubit<List<UserRoles?>> {
   UserRolesCubit() : super([UserRoles.vehicleOwner]);
 
+  void getRoles(List<UserRoles> roles) {
+    state.clear();
+    state.addAll(roles);
+  }
+
   void changeRole(UserRoles role) {
     state.add(role);
     return emit(state.toList());
@@ -27,4 +32,10 @@ class UserRolesCubit extends Cubit<List<UserRoles?>> {
       return emit(state.toList());
     }
   }
+}
+
+class UserAccessTokenCubit extends Cubit<String?> {
+  UserAccessTokenCubit() : super(null);
+
+  void storeToken(String? token) => emit(token);
 }

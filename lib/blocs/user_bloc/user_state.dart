@@ -33,4 +33,19 @@ class UserRegistered extends UserState {}
 
 class UserLogging extends UserState {}
 
-class UserLogged extends UserState {}
+class UserLogged extends UserState {
+  final String accessToken;
+
+  const UserLogged({required this.accessToken});
+}
+
+class UserProfileLoading extends UserState {}
+
+class UserProfileLoaded extends UserState {
+  final UserModel userModel;
+
+  const UserProfileLoaded({required this.userModel});
+
+  @override
+  List<Object> get props => [userModel];
+}

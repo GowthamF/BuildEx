@@ -66,6 +66,9 @@ class MyApp extends StatelessWidget {
             create: (context) => UserRolesCubit(),
           ),
           BlocProvider(
+            create: (context) => UserAccessTokenCubit(),
+          ),
+          BlocProvider(
             create: (context) => UserBloc(
               RepositoryProvider.of<UserRepository>(context),
             ),

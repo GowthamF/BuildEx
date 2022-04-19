@@ -1,5 +1,6 @@
 import 'package:buildex/blocs/blocs.dart';
 import 'package:buildex/common/common.dart';
+import 'package:buildex/cubits/cubits.dart';
 import 'package:buildex/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,6 +82,9 @@ class _SignInState extends State<SignIn> {
                 BlocConsumer<UserBloc, UserState>(
                   listener: (context, state) {
                     if (state is UserLogged) {
+                      context
+                          .read<UserAccessTokenCubit>()
+                          .storeToken(state.accessToken);
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

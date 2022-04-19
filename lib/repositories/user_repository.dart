@@ -14,11 +14,15 @@ class UserRepository {
     return _userService.registerUser(userModel);
   }
 
-  Future<void> loginUser(String userName, String password) {
+  Future<String?> loginUser(String userName, String password) {
     return _userService.loginUser(userName, password);
   }
 
   Future<void> logoutUser(UserModel userModel) {
     return _userService.logoutUser(userModel);
+  }
+
+  Future<UserModel?> getUser(String accessToken) {
+    return _userService.getUser(accessToken);
   }
 }

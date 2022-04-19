@@ -11,7 +11,7 @@ class UserModel {
   final String email;
   final List<UserRoles> roles;
   final List<String> jwtTokens;
-  final List<Map<String, dynamic>> refreshTokens;
+  final List<Map<String, dynamic>>? refreshTokens;
   final bool locked;
   final bool isActive;
   final String password;
@@ -22,9 +22,9 @@ class UserModel {
     required this.mobile,
     required this.email,
     required this.isActive,
-    required this.jwtTokens,
+    this.jwtTokens = const [],
     required this.locked,
-    required this.refreshTokens,
+    this.refreshTokens = const [],
     required this.roles,
     required this.password,
   });

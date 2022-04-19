@@ -29,3 +29,12 @@ class LoginUser extends UserEvent {
   @override
   List<Object> get props => [userName, password];
 }
+
+class GetProfile extends UserEvent {
+  final String accessToken;
+
+  const GetProfile({required this.accessToken});
+
+  @override
+  List<Object> get props => [accessToken];
+}

@@ -14,6 +14,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc(this.userRepository) : super(const UserInitial()) {
     on<RegisterUser>(_onRegisterUserEvent);
     on<LoginUser>(_onLoginUserEvent);
+    on<GetProfile>(_onGetProfileEvent);
   }
 
   Future<void> _onRegisterUserEvent(
@@ -31,8 +32,29 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       LoginUser event, Emitter<UserState> emit) async {
     try {
       emit(UserLogging());
-      await userRepository.loginUser(event.userName, event.password);
-      emit(UserLogged());
+      var accessToken =
+          await userRepository.loginUser(event.userName, event.password);
+      if (accessToken != null) {
+        emit(UserLogged(accessToken: accessToken));
+      } else {
+        emit(const UserError(errorMessage: 'Error while logging'));
+      }
+    } on ReportToUserException catch (e) {
+      emit(UserError(errorMessage: e.message));
+    }
+  }
+
+  FutureOr<void> _onGetProfileEvent(
+      GetProfile event, Emitter<UserState> emit) async {
+    try {
+      emit(UserProfileLoading());
+
+      var userModel = await userRepository.getUser(event.accessToken);
+      if (userModel != null) {
+        emit(UserProfileLoaded(userModel: userModel));
+      } else {
+        emit(const UserError(errorMessage: 'Error while getting profile'));
+      }
     } on ReportToUserException catch (e) {
       emit(UserError(errorMessage: e.message));
     }

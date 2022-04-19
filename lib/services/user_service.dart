@@ -32,12 +32,11 @@ class UserService {
     }
   }
 
-  Future<void> loginUser(String userName, String password) async {
+  Future<String?> loginUser(String userName, String password) async {
     var response = await httpHelper.post(
       Uri.parse('auth/login'),
-      body: {'userName': userName, 'passowrd': password},
+      body: {'username': userName, 'password': password},
     );
-    print(response.body);
     if (response.statusCode == 200) {
       var jsonResponse = Map<String, dynamic>.from(jsonDecode(response.body));
       if (jsonResponse.containsKey('statusCode')) {
@@ -46,6 +45,8 @@ class UserService {
               ? jsonResponse['message']
               : 'Error while creating an account';
           throw ReportToUserException(message: message);
+        } else {
+          return jsonResponse['data']['accessToken'];
         }
       }
     }
@@ -53,6 +54,8 @@ class UserService {
     if (response.statusCode != 200) {
       throw ReportToUserException(message: 'Error while creating an account');
     }
+
+    return null;
   }
 
   Future<void> logoutUser(UserModel userModel) async {
@@ -75,5 +78,32 @@ class UserService {
     if (response.statusCode != 200) {
       throw ReportToUserException(message: 'Error while creating an account');
     }
+  }
+
+  Future<UserModel?> getUser(String accessToken) async {
+    customHeaders['Authorization'] = 'Bearer $accessToken';
+    var response = await httpHelper.get(
+      Uri.parse('auth/profile'),
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      var jsonResponse = Map<String, dynamic>.from(jsonDecode(response.body));
+      if (jsonResponse.containsKey('statusCode')) {
+        if (jsonResponse['statusCode'] != 200) {
+          var message = jsonResponse.containsKey('message')
+              ? jsonResponse['message']
+              : 'Error while creating an account';
+          throw ReportToUserException(message: message);
+        } else {
+          return UserModel.fromJson(jsonResponse['data']);
+        }
+      }
+    }
+
+    if (response.statusCode != 200) {
+      throw ReportToUserException(message: 'Error while creating an account');
+    }
+
+    return null;
   }
 }
