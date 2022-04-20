@@ -18,14 +18,14 @@ class _ServiceCentersRequestsState extends State<ServiceCentersRequests> {
             labelColor: Colors.blue,
             tabs: [
               Tab(
-                text: 'Accept',
+                text: 'Pending',
+              ),
+              Tab(
+                text: 'Accepted',
               ),
               Tab(
                 text: 'Rejected',
               ),
-              Tab(
-                text: 'Pending',
-              )
             ],
           ),
           Expanded(
@@ -35,10 +35,45 @@ class _ServiceCentersRequestsState extends State<ServiceCentersRequests> {
                   children: [
                     Expanded(
                       child: ListView.builder(
-                        itemCount: 20,
+                        itemCount: 10,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            title: Text('data$index'),
+                              title: Text('Appointment $index'),
+                              subtitle: const Text('Requested by : User'),
+                              trailing: Wrap(
+                                children: [
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                        Icons.check_circle_outline_outlined),
+                                    color:
+                                        const Color.fromARGB(255, 1, 101, 52),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(Icons.cancel_outlined),
+                                    color: Colors.red,
+                                  ),
+                                ],
+                              ));
+                        },
+                      ),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text('Appointment $index'),
+                            subtitle: const Text('Requested by : User'),
+                            leading: const Icon(
+                              Icons.check_circle_outline_outlined,
+                              color: Color.fromARGB(255, 1, 101, 52),
+                            ),
                           );
                         },
                       ),
@@ -49,28 +84,19 @@ class _ServiceCentersRequestsState extends State<ServiceCentersRequests> {
                   children: [
                     Expanded(
                       child: ListView.builder(
-                        itemCount: 20,
+                        itemCount: 10,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            title: Text('data$index'),
+                            title: Text('Appointment $index'),
+                            subtitle: const Text('Requested by : User'),
+                            leading: const Icon(
+                              Icons.cancel_outlined,
+                              color: Colors.red,
+                            ),
                           );
                         },
                       ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: 20,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            title: Text('data$index'),
-                          );
-                        },
-                      ),
-                    ),
+                    )
                   ],
                 )
               ],
